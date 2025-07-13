@@ -1,0 +1,31 @@
+/* .Bars{
+    width: 600px;
+    height: 400px;
+
+}
+@media (max-width: 768px) {
+  .Bars {
+    width: 300px;         
+    height: 300px;       
+  }
+}
+  
+*/
+
+
+
+.Bars {
+  width: 600px;
+  height: 400px;
+  margin: auto;       /* ✅ Center horizontally */
+  display: block;     /* ✅ Ensures proper centering */
+}
+
+/* ✅ Responsive fix for smaller screens */
+@media (max-width: 768px) {
+  .Bars {
+    width: 300px;         /* or use fixed like 300px */
+    height: 300px;
+    margin: 5px auto;   
+  }
+}

@@ -1,0 +1,39 @@
+
+ .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+  }
+
+  
+  .formlogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    width: 350px;
+    height: auto;
+    background-color: rgb(131, 132, 218);
+    border-radius: 15px;
+   
+  }
+  
+  .formlogin input,
+  .formlogin h2 {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  .formlogin button {
+    margin-top: 1rem;
+    width: 50%;
+    height: 40px;
+    font-size: 1rem;
+    border-radius: 15px;
+    cursor: pointer;
+    border: none;
+  }
+  

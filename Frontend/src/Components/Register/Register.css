@@ -1,0 +1,66 @@
+.Register{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Register button{
+    width: 100px;
+    height: 40px;
+    font-size: 1rem;
+    border-radius: 15px;
+}
+
+.Register button:hover{
+    cursor: pointer;
+    background-color: rgb(89, 89, 139);
+}
+
+.form h2 {
+    font-size: 2rem;
+}
+
+.name{
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 3rem;
+}
+ .form select{
+    margin-top: 1rem;
+ }
+.form{
+      margin-top: 1rem;
+    text-align: center;
+    border-radius: 100px;
+    width: 60%;
+    height: 40%;
+    background-color: rgb(131, 132, 218);
+    padding: 2rem;
+}
+
+.form input{
+    margin-top: 2rem;
+    width: 40%;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.form button{
+    margin-top: 2rem;
+    width: 20%;
+    height: 50px;
+    font-size: 1rem;
+    border-radius: 15px;
+}
+
+.form button:hover{
+    cursor: pointer;
+    background-color: rgb(89, 89, 139);
+}
+
+
+
+
+
+
+
