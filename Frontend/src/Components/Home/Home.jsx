@@ -29,10 +29,15 @@ const Home = () => {
           else if (temp >= 20) type = "pleasant";
           else type = "cold";
 
-          const tipsRes = await axios.get(
-            `http://localhost:2000/api/weather/${type}`
-          );
+          // const tipsRes = await axios.get(
+          //   `http://localhost:2000/api/weather/${type}`
+          // );
            
+
+          const tipsRes = await axios.get(
+  `https://routineinfy-3.onrender.com/api/weather/${type}`
+);
+
           setCards(tipsRes.data);
           fetchFoodByType(type);
         } catch (err) {
@@ -52,9 +57,14 @@ const Home = () => {
 
   const fetchFoodByType = async (type) => {
     try {
-      const res = await axios.get(
-        `http://localhost:2000/api/food/food/${type}`
-      );
+      // const res = await axios.get(
+      //   `http://localhost:2000/api/food/food/${type}`
+      // );
+ const res = await axios.get(
+  `https://routineinfy-3.onrender.com/api/food/food/${type}`
+);
+
+
       
       setFoodData(res.data);
     } catch (err) {
@@ -97,9 +107,14 @@ const Home = () => {
       else type = "cold";
       fetchFoodByType(type);
 
+      // const tipsRes = await axios.get(
+      //   `http://localhost:2000/api/weather/${type}`
+      // );
+
       const tipsRes = await axios.get(
-        `http://localhost:2000/api/weather/${type}`
-      );
+  `https://routineinfy-3.onrender.com/api/weather/${type}`
+);
+
       setCards(tipsRes.data);
     } catch (err) {
       console.error("Error getting weather:", err);

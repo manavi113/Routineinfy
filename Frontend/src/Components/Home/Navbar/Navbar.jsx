@@ -106,7 +106,9 @@ const Navbar = () => {
             <div className="d-flex align-items-center">
               {user.profilePic && (
                 <img
-                  src={`http://localhost:2000/uploads/${user.profilePic}`}
+                  // src={`http://localhost:2000/uploads/${user.profilePic}`}
+                  src={`https://routineinfy-3.onrender.com/uploads/${user.profilePic}`}
+
                   alt="Profile"
                   style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'cover', marginRight: '8px' }}
                 />
