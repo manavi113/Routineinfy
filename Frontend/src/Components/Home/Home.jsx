@@ -32,6 +32,7 @@ const Home = () => {
           const tipsRes = await axios.get(
             `http://localhost:2000/api/weather/${type}`
           );
+           
           setCards(tipsRes.data);
           fetchFoodByType(type);
         } catch (err) {
@@ -54,6 +55,7 @@ const Home = () => {
       const res = await axios.get(
         `http://localhost:2000/api/food/food/${type}`
       );
+      
       setFoodData(res.data);
     } catch (err) {
       console.error("Error fetching food data:", err);

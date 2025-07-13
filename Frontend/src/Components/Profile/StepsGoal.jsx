@@ -182,29 +182,31 @@ const StepsGoal = () => {
   const [steps, setSteps] = useState(0);
   const [goal, setGoal] = useState(10000);
   const [goalReached, setGoalReached] = useState(false);
-  const [reward, setReward] = useState(null); // 🏆 reward state
-  const alertShownRef = useRef(false); // 👈 alert lock
+  const [reward, setReward] = useState(null); 
+  const alertShownRef = useRef(false);  
 
   const userId = localStorage.getItem("userId");
   const today = new Date().toISOString().slice(0, 10);
 
   const fetchSteps = async () => {
     try {
-      const res = await axios.get(`http://localhost:2000/api/steps/${userId}/${today}`);
+      // const res = await axios.get(`http://localhost:2000/api/steps/${userId}/${today}`);
+      const res = await axios.get(`https://routineinfy-3.onrender.com/api/steps/${userId}/${today}`);
+
       const stepsFetched = res.data.stepsTaken || 0;
       const goalFetched = res.data.goal || 10000;
 
       setSteps(stepsFetched);
       setGoal(goalFetched);
 
-      // set reward but no alert here
+      
       if (stepsFetched >= goalFetched) {
         setGoalReached(true);
         setReward("🏅 You earned a badge!");
       } else {
         setGoalReached(false);
         setReward(null);
-        alertShownRef.current = false; // reset alert if goal not reached
+        alertShownRef.current = false; 
       }
     } catch (error) {
       console.error("Error fetching steps:", error);
@@ -224,19 +226,24 @@ const StepsGoal = () => {
     const newTotal = steps + amount > goal ? goal - steps : amount;
     const updatedSteps = steps + newTotal;
 
-    await axios.post("http://localhost:2000/api/steps/log", {
+    // await axios.post("http://localhost:2000/api/steps/log", {
+    //   userId,
+    //   date: today,
+    //   steps: newTotal,
+    // });
+     await axios.post("https://routineinfy-3.onrender.com/api/steps/lo", {
       userId,
       date: today,
       steps: newTotal,
     });
 
-    // 🎉 Alert only when goal is newly reached
+    
     if (updatedSteps >= goal && !alertShownRef.current) {
       alert("🎉 Congratulations! You've completed your step goal today!");
       alertShownRef.current = true;
     }
 
-    fetchSteps(); // update UI
+    fetchSteps();  
   };
 
   return (

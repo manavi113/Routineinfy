@@ -61,7 +61,9 @@ const Navbar = () => {
       const id = localStorage.getItem("userId");
       if (id) {
         try {
-          const res = await axios.get(`http://localhost:2000/api/auth/profile/${id}`);
+          // const res = await axios.get(`http://localhost:2000/api/auth/profile/${id}`);
+          const res = await axios.get(`https://routineinfy-3.onrender.com/api/auth/profile/${id}`);
+
           setUser(res.data);
         } catch (err) {
           console.error("Failed to fetch user", err);

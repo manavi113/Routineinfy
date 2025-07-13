@@ -13,7 +13,9 @@ const LoginChart = () => {
   useEffect(() => {
     const fetchLoginLogs = async () => {
       const userId = localStorage.getItem('userId');
-      const res = await axios.get(`http://localhost:2000/api/auth/login-logs/${userId}`);
+      // const res = await axios.get(`http://localhost:2000/api/auth/login-logs/${userId}`);
+      const res = await axios.get(`https://routineinfy-3.onrender.com/api/auth/login-logs/${userId}`);
+
     //   setLoginData(res.data.loginLogs);
      if (res.data && Array.isArray(res.data.loginLogs)) {
         setLoginData(res.data.loginLogs);

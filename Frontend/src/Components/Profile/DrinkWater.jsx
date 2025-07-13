@@ -112,7 +112,9 @@ const DrinkWater = () => {
   const today = new Date().toISOString().slice(0, 10);
 
   const fetchWater = async () => {
-    const res = await axios.get(`http://localhost:2000/api/water/${userId}/${today}`);
+    // const res = await axios.get(`http://localhost:2000/api/water/${userId}/${today}`);
+    const res = await axios.get(`https://routineinfy-3.onrender.com/api/water/${userId}/${today}`);
+
     const data = res.data;
 
     setGlasses(data.glassesDrunk || 0);
@@ -136,7 +138,12 @@ const DrinkWater = () => {
       alert("🎉 Goal already reached!");
       return;
     }
-    await axios.post("http://localhost:2000/api/water/log", {
+    // await axios.post("http://localhost:2000/api/water/log", {
+    //   userId,
+    //   date: today,
+    //   glasses: 1,
+    // });
+     await axios.post("https://routineinfy-3.onrender.com/api/water/log", {
       userId,
       date: today,
       glasses: 1,

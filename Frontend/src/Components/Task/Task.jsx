@@ -30,7 +30,8 @@ const issueToKeywords = {
 useEffect(() => {
   const userId = localStorage.getItem("userId");
   if (userId) {
-    axios.get(`http://localhost:2000/api/auth/profile/${userId}`)
+    // axios.get(`http://localhost:2000/api/auth/profile/${userId}`)
+    axios.get(`https://routineinfy-3.onrender.com/api/auth/profile/${userId}`)
       .then((res) => {
         localStorage.setItem("age", res.data.age);
         localStorage.setItem("gender", res.data.gender);
@@ -67,18 +68,24 @@ const extractKeywordsFromAnalysis = (text) => {
       if (!task) return;
   
       try {
-        await axios.post('http://localhost:2000/taskapi/tasks', { task },
+        // await axios.post('http://localhost:2000/taskapi/tasks', { task },
+        await axios.post('https://routineinfy-3.onrender.com/taskapi/tasks', { task },
            {
     headers: {
-      Authorization: localStorage.getItem('token'), // ✅ Send token
+      Authorization: localStorage.getItem('token'), 
     }
   }
         );
         alert("Task added successfully!");
       //  userId: localStorage.getItem('userId')
 
-        const geminiRes = await axios.post(
-          'http://localhost:2000/api/gemini/get-review',
+//         const geminiRes = await axios.post(
+//           'http://localhost:2000/api/gemini/get-review',
+//          {
+//   prompt: `You are a strict health assistant.
+// Use the details below to generate a health analysis.
+const geminiRes = await axios.post(
+          'https://routineinfy-3.onrender.com/api/gemini/get-review',
          {
   prompt: `You are a strict health assistant.
 Use the details below to generate a health analysis.
@@ -99,7 +106,9 @@ Generate a health analysis in the specified format.
         if (keywords.length === 0) {
   console.warn("No keywords extracted from Gemini response.");
 } else {
-    const prodRes = await axios.post('http://localhost:2000/api/Prod/prod', { keywords });
+    // const prodRes = await axios.post('http://localhost:2000/api/Prod/prod', { keywords });
+    const prodRes = await axios.post('https://routineinfy-3.onrender.com/api/Prod/prod', { keywords });
+
     setProducts(prodRes.data);
 }
        

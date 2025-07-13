@@ -7,7 +7,9 @@ const ForgetPass= () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:2000/api/auth/forgot-password', { email });
+      // await axios.post('http://localhost:2000/api/auth/forgot-password', { email });
+      await axios.post('https://routineinfy-3.onrender.com/api/auth/forgot-password', { email });
+
       alert('Reset link sent to your email.');
     } catch (err) {
       alert(err.response?.data?.msg || 'Error sending reset email');

@@ -47,10 +47,12 @@ const Profile = () => {
     if (formData.profilePic) data.append("profilePic", formData.profilePic);
 
     try {
-      const res = await axios.put(
-        `http://localhost:2000/api/auth/profile/${id}`,
-        data
-      );
+      // const res = await axios.put(
+      //   `http://localhost:2000/api/auth/profile/${id}`,
+      //   data
+      // );
+       const res = await axios.put(`https://routineinfy-3.onrender.com/api/auth/profile/${id}`, data);
+
       setUser(res.data.user);
       setEditMode(false);
       alert("Profile updated successfully!");
@@ -62,13 +64,17 @@ const Profile = () => {
   useEffect(() => {
     const id = localStorage.getItem("userId");
     if (id) {
-      axios
-        .get(`http://localhost:2000/taskapi/user/${id}`)
+      
+        // .get(`http://localhost:2000/taskapi/user/${id}`)
+        axios.get(`https://routineinfy-3.onrender.com/taskapi/user/${id}`)
+
         .then((res) => setTasks(res.data))
         .catch((err) => console.error(err));
 
-      axios
-        .get(`http://localhost:2000/api/auth/profile/${id}`)
+      // axios
+      //   .get(`http://localhost:2000/api/auth/profile/${id}`)
+      axios.get(`https://routineinfy-3.onrender.com/api/auth/profile/${id}`)
+
         .then((res) => setUser(res.data))
         .catch((err) => console.error("Profile fetch error:", err));
     }
@@ -117,7 +123,9 @@ const Profile = () => {
               {user.profilePic && (
                 <div className="profile-image">
                   <img
-                    src={`http://localhost:2000/uploads/${user.profilePic}`}
+                    // src={`http://localhost:2000/uploads/${user.profilePic}`}
+                    src={`https://routineinfy-3.onrender.com/uploads/${user.profilePic}`}
+
                     alt="Profile"
                   />
                 </div>

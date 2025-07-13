@@ -9,9 +9,13 @@ const ResetPass= () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:2000/api/auth/reset-password/${token}`, {
-        password: newPassword,
-      });
+    //   await axios.post(`http://localhost:2000/api/auth/reset-password/${token}`, {
+    //     password: newPassword,
+    //   });
+    await axios.post(`https://routineinfy-3.onrender.com/api/auth/reset-password/${token}`, {
+  password: newPassword,
+});
+
       alert('Password updated. Please login.');
     } catch (err) {
       alert(err.response?.data?.msg || 'Error resetting password');

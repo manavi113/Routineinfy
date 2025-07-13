@@ -86,7 +86,9 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:2000/api/auth/login', formData);
+      // const res = await axios.post('http://localhost:2000/api/auth/login', formData);
+      const res = await axios.post('https://routineinfy-3.onrender.com/api/auth/login', formData);
+
       console.log("Full Response:", res);
 
       const userId = res?.data?.user?._id;
@@ -100,11 +102,16 @@ const Login = () => {
       localStorage.setItem("userId", userId);
       localStorage.setItem("token", token);
 
-      // ✅ Now log login date safely
-      await axios.post('http://localhost:2000/api/auth/log-login', {
-        userId,
-        date: new Date().toISOString().slice(0, 10)
-      });
+      
+      // await axios.post('http://localhost:2000/api/auth/log-login', {
+      //   userId,
+      //   date: new Date().toISOString().slice(0, 10)
+      // });
+
+await axios.post('https://routineinfy-3.onrender.com/api/auth/log-login', {
+  userId,
+  date: new Date().toISOString().slice(0, 10)
+});
 
       navigate('/home');
     } catch (err) {

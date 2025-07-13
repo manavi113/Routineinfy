@@ -54,7 +54,9 @@ const Register = () => {
         data.append("profilePic", image);   
       }
 
-      const res = await axios.post('http://localhost:2000/api/auth/register', data);
+      // const res = await axios.post('http://localhost:2000/api/auth/register', data);
+      const res = await axios.post('https://routineinfy-3.onrender.com/api/auth/register', data);
+
       localStorage.setItem('userId', res.data.user._id);
       alert("Registered successfully!");
       navigate('/login');
