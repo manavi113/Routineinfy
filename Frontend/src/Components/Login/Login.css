@@ -3,15 +3,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-   
+   height: 100vh;
   }
 
   
   .formlogin {
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
     padding: 30px;
     width: 350px;
     height: auto;

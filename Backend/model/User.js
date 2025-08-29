@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
     resetToken: String,
   resetTokenExpiry: Date,
   loginLogs: {
-  type: [String],  // e.g., ["2025-06-28", "2025-06-29"]
+  type: [String],   
   default: []
 }
 });

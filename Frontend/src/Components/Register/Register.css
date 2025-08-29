@@ -9,6 +9,7 @@
     height: 40px;
     font-size: 1rem;
     border-radius: 15px;
+     
 }
 
 .Register button:hover{
@@ -47,10 +48,11 @@
 
 .form button{
     margin-top: 2rem;
-    width: 20%;
+    min-width: 20%;
     height: 50px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     border-radius: 15px;
+    /* padding: 0 1rem; */
 }
 
 .form button:hover{

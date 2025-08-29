@@ -18,8 +18,8 @@ const ForgetPass= () => {
 
   return (
     <div className="forgot-password">
-      <h2>Forgot Password</h2>
-      <form onSubmit={handleSubmit}>
+       
+      <form onSubmit={handleSubmit} style={{marginTop:'3rem'}}>
         <input 
           type="email" 
           placeholder="Enter your registered email"
