@@ -47,11 +47,13 @@
 
 import React, { useEffect,useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import './Navbar.css';
 import axios from 'axios';
 
 
 const Navbar = () => {
+    const navigate = useNavigate();
   const location = useLocation();
    
   const [user, setUser] = useState(null);
@@ -72,12 +74,21 @@ const Navbar = () => {
     };
     fetchUser();
   }, []);
-  const handleLogout = () => {
-  localStorage.removeItem("userId");  
+//   const handleLogout = () => {
+//   localStorage.removeItem("userId");  
  
 
-  window.location.href = "/login"; 
+//   window.location.href = "/login"; 
+// };
+
+ 
+
+const handleLogout = () => {
+  localStorage.removeItem("userId");  
+ 
+  navigate("/login"); // SPA ke andar route change
 };
+
 
   useEffect(() => {
     const navLinks = document.querySelectorAll(".nav-link");
@@ -103,22 +114,18 @@ const Navbar = () => {
       <div className="container-fluid">
        
         {user && (
-            <div className="d-flex align-items-center">
-              {user.profilePic && (
-                <img
-                  // src={`http://localhost:2000/uploads/${user.profilePic}`}
-                  src={`https://routineinfy-3.onrender.com/uploads/${user.profilePic}`}
-
-                  alt="Profile"
-                  style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'cover', marginRight: '8px' }}
-                />
-              )}
-              <span className="text-white">{user.name}</span>
-              <button onClick={handleLogout}>Logout</button>
-
-            </div>
-            
-          )}
+    <div className="d-flex align-items-center ms-3">
+      {user.profilePic && (
+        <img
+          src={`https://routineinfy-3.onrender.com/uploads/${user.profilePic}`}
+          alt="Profile"
+          style={{ width: '35px', height: '35px', borderRadius: '50%', objectFit: 'cover', marginRight: '8px' }}
+        />
+      )}
+      <span className="text-white me-2">{user.name}</span>
+      <button className="btn btn-sm btn-outline-light" onClick={handleLogout}>Logout</button>
+    </div>
+  )}
         
         <button
           className="navbar-toggler"
@@ -142,6 +149,9 @@ const Navbar = () => {
   </li>
 </ul>
 
+
+
+ 
         </div>
       </div>
     </nav>
