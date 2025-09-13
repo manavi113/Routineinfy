@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-   height: 100vh;
+   /* height: 100vh; */
   }
 
   
@@ -13,8 +13,9 @@
     /* justify-content: center;
     align-items: center; */
     padding: 30px;
-    width: 350px;
-    height: auto;
+    width: 340px;
+     
+    height: 180;
     background-color: rgb(131, 132, 218);
     border-radius: 15px;
    

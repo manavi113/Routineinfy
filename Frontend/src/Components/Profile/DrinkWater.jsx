@@ -152,24 +152,38 @@ const DrinkWater = () => {
   };
 
   // 2‑hour reminder via Notification API
-  const askNotificationPermission = async () => {
-    if (Notification.permission !== "granted") {
-      await Notification.requestPermission();
-    }
-  };
+  // const askNotificationPermission = async () => {
+  //   if (Notification.permission !== "granted") {
+  //     await Notification.requestPermission();
+  //   }
+  // };
 
-  useEffect(() => {
-    askNotificationPermission();
-    const interval = setInterval(() => {
-      if (!notifiedRef.current && glasses < goal && Notification.permission === "granted") {
-        new Notification("💧 Reminder", {
-          body: "Time to drink a glass of water!",
-        });
-        notifiedRef.current = true;
-      }
-    }, 1  * 60 * 1000);
-    return () => clearInterval(interval);
-  }, [glasses, goal]);
+  // useEffect(() => {
+  //   askNotificationPermission();
+  //   const interval = setInterval(() => {
+  //     if (!notifiedRef.current && glasses < goal && Notification.permission === "granted") {
+  //       new Notification("💧 Reminder", {
+  //         body: "Time to drink a glass of water!",
+  //       });
+  //       notifiedRef.current = true;
+  //     }
+  //   }, 1  * 60 * 1000);
+  //   return () => clearInterval(interval);
+  // }, [glasses, goal]);
+
+
+//   useEffect(() => {
+//   askNotificationPermission();
+//   const interval = setInterval(() => {
+//     if (glasses < goal && Notification.permission === "granted") {
+//       new Notification("💧 Reminder", {
+//         body: "Time to drink a glass of water!",
+//       });
+//     }
+//   }, 5 * 1000); // 40 seconds
+//   return () => clearInterval(interval);
+// }, [glasses, goal]);
+
 
   useEffect(() => {
     fetchWater();

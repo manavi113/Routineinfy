@@ -251,7 +251,7 @@ const Login = () => {
               onClick={() => navigate('/forget-pass')}
               style={{ color: 'blue', cursor: 'pointer', marginTop: '10px' }}
             >
-              Forgot Password?
+              {/* Forgot Password? */}
             </p>
           </form>
         </div>

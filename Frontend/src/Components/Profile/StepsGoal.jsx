@@ -231,7 +231,7 @@ const StepsGoal = () => {
     //   date: today,
     //   steps: newTotal,
     // });
-     await axios.post("https://routineinfy-3.onrender.com/api/steps/lo", {
+     await axios.post("https://routineinfy-3.onrender.com/api/steps/log", {
       userId,
       date: today,
       steps: newTotal,

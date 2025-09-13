@@ -175,36 +175,78 @@ router.get('/user/:userId', async (req, res) => {
 
 
 
-router.post('/forgot-password', async (req, res) => {
-  const { email } = req.body;
+// router.post('/forgot-password', async (req, res) => {
+//   const { email } = req.body;
 
-  const user = await User.findOne({ email });
-  if (!user) return res.status(400).json({ msg: "User not found" });
+//   const user = await User.findOne({ email });
+//   if (!user) return res.status(400).json({ msg: "User not found" });
 
-  const token = crypto.randomBytes(32).toString("hex");
-  user.resetToken = token;
-  user.resetTokenExpiry = Date.now() + 3600000;  
-  await user.save();
+//   const token = crypto.randomBytes(32).toString("hex");
+//   user.resetToken = token;
+//   user.resetTokenExpiry = Date.now() + 3600000;  
+//   await user.save();
 
-  const resetLink = `https://routineinfy-3.onrender.com/reset-password/${token}`;  
+//   const resetLink = `https://routineinfy-3.onrender.com/reset-password/${token}`;  
 
  
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-       user: EMAIL_USER,
-        pass: EMAIL_PASS
-    },
-  });
+//   const transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//        user: EMAIL_USER,
+//         pass: EMAIL_PASS
+//     },
+//   });
 
-  await transporter.sendMail({
-    to: user.email,
-    subject: 'Password Reset',
-    html: `<p>Click <a href="${resetLink}">here</a> to reset your password.</p>`
-  });
+//   await transporter.sendMail({
+//     to: user.email,
+//     subject: 'Password Reset',
+//     html: `<p>Click <a href="${resetLink}">here</a> to reset your password.</p>`
+//   });
 
-  res.json({ msg: 'Reset link sent to email' });
+//   res.json({ msg: 'Reset link sent to email' });
+// });
+
+
+
+
+
+
+router.post('/forgot-password', async (req, res) => {
+  try {
+    const { email } = req.body;
+    console.log("Email received:", email);
+
+    const user = await User.findOne({ email });
+    console.log("User found:", user);
+
+    if (!user) return res.status(400).json({ msg: "User not found" });
+
+    const token = crypto.randomBytes(32).toString("hex");
+    user.resetToken = token;
+    user.resetTokenExpiry = Date.now() + 3600000;
+    await user.save();
+    console.log("Token saved for user");
+
+    const resetLink = `https://routineinfy-3.onrender.com/reset-password/${token}`;
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: { user: EMAIL_USER, pass: EMAIL_PASS },
+    });
+
+    await transporter.sendMail({
+      to: user.email,
+      subject: 'Password Reset',
+      html: `<p>Click <a href="${resetLink}">here</a> to reset your password.</p>`
+    });
+
+    res.json({ msg: 'Reset link sent to email' });
+  } catch (err) {
+    console.error("Forgot password error:", err);
+    res.status(500).json({ msg: "Internal server error" });
+  }
 });
+
 
 
 
