@@ -44,7 +44,7 @@ useEffect(() => {
       const data = res.data;
       setGlasses(data.glassesDrunk || 0);
       setGoal(data.goal || 8);
-       localStorage.setItem("glasses", JSON.stringify(glassesDrunk));
+       localStorage.setItem("glasses", JSON.stringify(data.glassesDrunk || 0));
     } catch (err) {
       console.log(err);
     }

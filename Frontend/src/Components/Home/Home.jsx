@@ -147,6 +147,7 @@ const Home = () => {
           >
             <option value="">-- Select a city --</option>
             {cityOptions.map((city, index) => (
+              
               <option key={index} value={index}>
                 {city.display_name || city.name || "Unknown location"}
               </option>
