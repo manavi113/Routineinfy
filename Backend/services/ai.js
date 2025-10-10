@@ -109,7 +109,7 @@ async function generateContent(prompt) {
   } catch (err) {
     console.error("AI service error:", err.response?.data || err.message);
      console.error("AI service error data:", err.response?.data);
-    return { reply: "here the work is iunder Progress." };
+    return { reply: "Here the work is under Progress." };
   }
 }
 
