@@ -1,14 +1,14 @@
 // import React, { useState } from 'react';
 // import axios from 'axios';
 
-// const Chatbot = () => {
+// const Task = () => {
 //     const [input, setInput] = useState('');
 //     const [messages, setMessages] = useState([]);
 
 //     async function getAIResponse() {
 //         try {
 //             const response = await axios.post(
-//                 "http://localhost:3002/ai/get-review",
+//                 "https://routineinfy-3.onrender.com/ai/get-review",
 //                 { prompt: input.trim() }, // Ensure input isn't empty or just spaces
 //                 { headers: { "Content-Type": "application/json" } }
 //             );
@@ -72,7 +72,7 @@
 //     button: { padding: '10px 15px', backgroundColor: '#4caf50', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }
 // };
 
-// export default Chatbot;
+// export default Task;
 
 
 
@@ -99,7 +99,7 @@ const Task = () => {
 
         try {
             const response = await axios.post(
-                "http://localhost:2000/ai/get-review",
+                "https://routineinfy-3.onrender.com/ai/get-review",
                 { prompt: input.trim() },  
                 { headers: { "Content-Type": "application/json" } }
             );
