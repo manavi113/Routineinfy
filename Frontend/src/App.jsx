@@ -102,7 +102,7 @@ useEffect(() => {
     <Routes>
    <Route path="/" element={<Main/>} />
     <Route path="/home" element={<Home />} />
-     <Route path="/task" element={<Task />} />
+     {/* <Route path="/task" element={<Task />} /> */}
      <Route path="/profile" element={<Profile />} />
      <Route path="/login" element={<Login />} />
      <Route path="/forget-pass" element={<ForgetPass/>} />
